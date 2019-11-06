@@ -1,1 +1,3 @@
-Needs work.
+Todo
+- Fuzzy file finder.
+- Syntastic.
