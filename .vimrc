@@ -10,6 +10,7 @@ set number
 set wildmenu
 set lazyredraw
 set showmatch
+set relativenumber
 
 " Case insensitive search.
 set ignorecase
@@ -18,46 +19,39 @@ set smartcase
 set incsearch
 set hlsearch
 
+" Maintain undo history between sessions
+set undofile 
+
 " Turn off highlighting with enter.
 nnoremap <CR> :noh<CR><CR>
 set laststatus=2
 
-" Function that allows jumping between levels of same indentation.
-" see: https://vi.stackexchange.com/questions/12835/how-do-i-jump-to-the-next-line-with-the-same-indent-level
-function! GoToNextIndent(inc)
-    " Get the cursor current position
-    let currentPos = getpos('.')
-    let currentLine = currentPos[1]
-    let matchIndent = 0
-    " Look for a line with the same indent level whithout going out of the buffer
-    while !matchIndent && currentLine != line('$') + 1 && currentLine != -1 
-        let currentLine += a:inc
-        let matchIndent = indent(currentLine) == indent('.')
-    endwhile
-    " If a line is found go to this line
-    if (matchIndent)
-        let currentPos[1] = currentLine
-        call setpos('.', currentPos)
-    endif
-endfunction
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Indent movement mappings.
-nmap <TAB> :call GoToNextIndent(1)<CR>
-nmap <S-TAB> :call GoToNextIndent(-1)<CR>
-
-" jk in autocomplete.
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Vundle
 set nocompatible
 set rtp+=$HOME/.vim/bundle/Vundle.vim/
-call vundle#begin('$HOME/.vim/bundle/')filetype off
+call vundle#begin('$HOME/.vim/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ajh17/vimcompletesme'
+Plugin 'ludwig/split-manpage.vim'
+Plugin 'kshenoy/vim-signature'
 call vundle#end()
+color aqua
 filetype plugin indent on
+
+
