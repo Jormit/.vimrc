@@ -1,6 +1,8 @@
 syntax on
 
 let mapleader = ","
+
+" Spaces instead of tabs.
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -11,6 +13,9 @@ set wildmenu
 set lazyredraw
 set showmatch
 set relativenumber
+
+set nocompatible
+set backspace=indent,eol,start
 
 " Case insensitive search.
 set ignorecase
@@ -26,15 +31,13 @@ set undofile
 nnoremap <CR> :noh<CR><CR>
 set laststatus=2
 
-" Syntastic Config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Execute current line as shell command and place output in buffer.
+noremap Q :exec 'r!'.getline('.')<CR>
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'c'
 
 " Vundle
 set nocompatible
@@ -48,10 +51,9 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ajh17/vimcompletesme'
-Plugin 'ludwig/split-manpage.vim'
 Plugin 'kshenoy/vim-signature'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 color aqua
 filetype plugin indent on
-
-
