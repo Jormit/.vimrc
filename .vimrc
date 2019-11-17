@@ -17,6 +17,9 @@ set relativenumber
 set nocompatible
 set backspace=indent,eol,start
 
+set list
+set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
+
 " Case insensitive search.
 set ignorecase
 set smartcase
@@ -55,5 +58,8 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 call vundle#end()
-color aqua
+colorscheme 256-grayvim 
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+set bg=dark
 filetype plugin indent on
