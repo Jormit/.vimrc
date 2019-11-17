@@ -1,3 +1,1 @@
-Todo
-- Fuzzy file finder.
-- Syntastic.
+Basic vimrc.
