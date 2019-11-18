@@ -42,6 +42,14 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'c'
 
+" Drag visuals setup
+runtime plugin/dragvisuals.vim
+vmap <expr> <LEFT>  DVB_Drag('left')
+vmap <expr> <RIGHT> DVB_Drag('right')
+vmap <expr> <DOWN>  DVB_Drag('down')
+vmap <expr> <UP>    DVB_Drag('up')
+vmap <expr>  D      DVB_Duplicate() 
+let g:DVB_TrimWS = 1
 " Vundle
 set nocompatible
 set rtp+=$HOME/.vim/bundle/Vundle.vim/
@@ -57,6 +65,8 @@ Plugin 'ajh17/vimcompletesme'
 Plugin 'kshenoy/vim-signature'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ludwig/split-manpage.vim'
+Plugin 'jondkinney/dragvisuals.vim'
 call vundle#end()
 colorscheme 256-grayvim 
 colorscheme gruvbox
