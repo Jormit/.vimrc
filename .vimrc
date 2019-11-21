@@ -14,7 +14,12 @@ set lazyredraw
 set showmatch
 set relativenumber
 
-set nocompatible
+" Folding.
+set foldmethod=manual   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 set backspace=indent,eol,start
 
 set list
@@ -50,6 +55,7 @@ vmap <expr> <DOWN>  DVB_Drag('down')
 vmap <expr> <UP>    DVB_Drag('up')
 vmap <expr>  D      DVB_Duplicate() 
 let g:DVB_TrimWS = 1
+
 " Vundle
 set nocompatible
 set rtp+=$HOME/.vim/bundle/Vundle.vim/
@@ -68,6 +74,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ludwig/split-manpage.vim'
 Plugin 'jondkinney/dragvisuals.vim'
 call vundle#end()
+
+" For some reason this is necessary. 
 colorscheme 256-grayvim 
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'hard'
